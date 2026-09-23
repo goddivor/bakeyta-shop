@@ -11,8 +11,9 @@ window.BAKEYTA_CONFIG = {
   email: "", // ex. "contact@bakeyta.com" (laisser vide pour masquer)
 
   reseaux: {
-    instagram: "", // ex. "https://instagram.com/bakeyta"
-    tiktok: "",
+    instagram: "https://www.instagram.com/mornex_bakeyta",
+    tiktok: "https://www.tiktok.com/@mornex_bakeyta",
+    youtube: "https://www.youtube.com/@mornex.bakeyta",
     facebook: "",
   },
 

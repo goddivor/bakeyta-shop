@@ -422,7 +422,7 @@
 
   const contact = [`<li><a href="${waUrl()}" target="_blank" rel="noopener">WhatsApp</a></li>`];
   if (CONFIG.email) contact.push(`<li><a href="mailto:${CONFIG.email}">${esc(CONFIG.email)}</a></li>`);
-  const noms = { instagram: "Instagram", tiktok: "TikTok", facebook: "Facebook" };
+  const noms = { instagram: "Instagram", tiktok: "TikTok", youtube: "YouTube", facebook: "Facebook" };
   Object.entries(CONFIG.reseaux).forEach(([k, url]) => { if (url) contact.push(`<li><a href="${url}" target="_blank" rel="noopener">${noms[k]}</a></li>`); });
   $("#footer-contact").innerHTML = contact.join("");
   $("#annee").textContent = new Date().getFullYear();
