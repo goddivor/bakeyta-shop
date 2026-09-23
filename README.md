@@ -6,7 +6,7 @@ Les commandes passent par **WhatsApp**. Le client remplit son panier, indique sa
 
 ## Avant la mise en ligne : à faire absolument
 
-1. **Numéro WhatsApp** : dans `assets/js/config.js`, remplacer `22800000000` par le vrai numéro (format international, chiffres uniquement, par exemple `22890123456`).
+1. **Numéro WhatsApp** : dans `assets/js/config.js`, vérifier le numéro `22892127449` (format international, chiffres uniquement, par exemple `22890123456`).
 2. **Prix** : les prix actuels (12 000, 20 000 et 8 000 FCFA) sont **provisoires**. Les ajuster dans `assets/js/produits.js`.
 3. **Frais de livraison** : vérifier les montants et délais dans `assets/js/config.js` (`livraison`).
 4. **Réseaux sociaux et e-mail** : les renseigner dans `assets/js/config.js` (ils s'affichent automatiquement dans le pied de page).

@@ -6,7 +6,7 @@
 window.BAKEYTA_CONFIG = {
   // Numéro WhatsApp qui reçoit les commandes : format international, chiffres uniquement.
   // Exemple pour le Togo : "22890000000" (228 = indicatif du Togo).
-  whatsapp: "22800000000",
+  whatsapp: "22892127449",
 
   email: "", // ex. "contact@bakeyta.com" (laisser vide pour masquer)
 
