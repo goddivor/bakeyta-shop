@@ -247,6 +247,7 @@ body:has(dialog[open]) { overflow: hidden; }
   display: grid; place-items: center; min-width: 52px; height: 46px; padding: 0 .8rem; border-radius: 10px;
   border: 1.5px solid var(--ligne); font-weight: 700; cursor: pointer;
 }
+.sizes .rupture span { opacity: .4; text-decoration: line-through; cursor: not-allowed; }
 .sizes input:checked + span { background: var(--creme); color: var(--noir); border-color: var(--creme); }
 .sizes input:focus-visible + span { outline: 3px solid var(--flamme); outline-offset: 2px; }
 .buy-row { display: flex; gap: .6rem; margin-top: 1.4rem; }

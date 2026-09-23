@@ -1,9 +1,23 @@
-(() => {
+(async () => {
   "use strict";
 
-  const CONFIG = window.BAKEYTA_CONFIG;
-  const PRODUITS = window.BAKEYTA_PRODUITS;
-  const GUIDES = window.BAKEYTA_GUIDES;
+  const API = window.BAKEYTA_API;
+
+  // Catalogue et réglages viennent de l'API ; en cas d'échec, on garde les données embarquées (config.js, produits.js).
+  async function chargerCatalogue() {
+    try {
+      const r = await fetch(`${API}/api/catalogue`, { signal: AbortSignal.timeout(8000) });
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+      const d = await r.json();
+      if (!Array.isArray(d.produits) || !d.config?.whatsapp) throw new Error("Catalogue incomplet");
+      return { config: d.config, produits: d.produits, guides: d.guides, enLigne: true };
+    } catch (err) {
+      console.warn("[BAKEYTA] API indisponible, catalogue embarqué utilisé :", err.message);
+      return { config: window.BAKEYTA_CONFIG, produits: window.BAKEYTA_PRODUITS, guides: window.BAKEYTA_GUIDES, enLigne: false };
+    }
+  }
+
+  const { config: CONFIG, produits: PRODUITS, guides: GUIDES } = await chargerCatalogue();
   const NBSP = " ";
 
   const $ = (sel, root = document) => root.querySelector(sel);
@@ -118,7 +132,10 @@
             <a href="#tailles" data-guide="${p.guide}">Guide des tailles</a>
           </p>
           <fieldset class="sizes" aria-labelledby="pm-taille-label">
-            ${p.tailles.map((t) => `<label><input type="radio" name="taille" value="${t}" ${unique ? "checked" : ""} required><span>${t}</span></label>`).join("")}
+            ${p.tailles.map((t) => {
+              const rupture = p.statut !== "precommande" && p.stock?.[t] != null && p.stock[t] <= 0;
+              return `<label${rupture ? ' class="rupture" title="Rupture de stock"' : ""}><input type="radio" name="taille" value="${t}" ${unique && !rupture ? "checked" : ""} ${rupture ? "disabled" : ""} required><span>${t}</span>${rupture ? '<span class="visually-hidden"> (rupture de stock)</span>' : ""}</label>`;
+            }).join("")}
           </fieldset>
           <p class="form-error" id="pm-error" role="alert"></p>
 
@@ -291,7 +308,7 @@
     return `BKT-${date}-${Math.random().toString(36).slice(2, 6).toUpperCase()}`;
   }
 
-  form.addEventListener("submit", (e) => {
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const erreur = $("#form-error");
     let premierInvalide = null;
@@ -310,35 +327,83 @@
 
     const v = Object.fromEntries(new FormData(form));
     store.set("bkt-client", { zone: v.zone, nom: v.nom, tel: v.tel, adresse: v.adresse });
+
+    // Fenêtre ouverte tout de suite (pendant le clic), sinon les téléphones bloquent l'ouverture après l'attente réseau.
+    const fenetre = window.open("", "_blank");
+    const bouton = form.querySelector("[type=submit]");
+    bouton.disabled = true;
+    bouton.textContent = "Envoi en cours…";
+    try {
+      const { numero, texte } = await enregistrerCommande(v);
+      const url = waUrl(texte);
+      if (fenetre) fenetre.location.href = url;
+      else location.href = url;
+      if (numero) {
+        panier = [];
+        sauver();
+        afficherPanier();
+        fermer(drawer);
+        notifier(`Commande ${numero} enregistrée${NBSP}: envoie le message sur WhatsApp`);
+      } else {
+        notifier("Commande prête" + NBSP + ": envoie le message sur WhatsApp");
+      }
+    } catch (err) {
+      fenetre?.close();
+      erreur.textContent = err.message;
+    } finally {
+      bouton.disabled = false;
+      bouton.textContent = "Envoyer ma commande sur WhatsApp";
+    }
+  });
+
+  // Enregistre la commande dans l'API. Si l'API est injoignable, on prépare le message localement pour ne jamais perdre la vente.
+  async function enregistrerCommande(v) {
+    const corps = {
+      items: panier.map(({ id, taille, qte }) => ({ id, taille, qte })),
+      zone: v.zone, nom: v.nom.trim(), tel: v.tel.trim(), adresse: v.adresse.trim(), note: v.note.trim(),
+    };
+    let r;
+    try {
+      r = await fetch(`${API}/api/orders`, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(corps),
+        signal: AbortSignal.timeout(10000),
+      });
+    } catch {
+      return { numero: null, texte: messageLocal(v) };
+    }
+    const d = await r.json().catch(() => ({}));
+    if (r.ok) return { numero: d.numero, texte: d.message };
+    if (r.status >= 500) return { numero: null, texte: messageLocal(v) };
+    throw new Error(d.details?.[0]?.message || d.error || "Commande impossible, vérifie ton panier.");
+  }
+
+  function messageLocal(v) {
     const z = zoneChoisie();
     const st = sousTotal();
-
-    const lignes = panier.map((l) => {
-      const p = produitParId(l.id);
-      return `• ${l.qte} × ${p.nom} (${p.coloris}), taille ${l.taille} : ${fcfa(p.prix * l.qte)}`;
-    });
-    const texte = [
-      `Bonjour BAKEYTA ! Voici ma commande ${numeroCommande()} :`,
+    return [
+      `Bonjour BAKEYTA${NBSP}! Voici ma commande ${numeroCommande()}${NBSP}:`,
       "",
-      ...lignes,
+      ...panier.map((l) => {
+        const p = produitParId(l.id);
+        return `• ${l.qte} × ${p.nom} (${p.coloris}), taille ${l.taille}${NBSP}: ${fcfa(p.prix * l.qte)}`;
+      }),
       "",
-      `Sous-total : ${fcfa(st)}`,
-      `Livraison (${z.nom}) : ${z.frais == null ? "à confirmer" : fcfa(z.frais)}`,
-      `Total : ${fcfa(st + (z.frais ?? 0))}${z.frais == null ? " + livraison" : ""}`,
+      `Sous-total${NBSP}: ${fcfa(st)}`,
+      `Livraison (${z.nom})${NBSP}: ${z.frais == null ? "à confirmer" : fcfa(z.frais)}`,
+      `Total${NBSP}: ${fcfa(st + (z.frais ?? 0))}${z.frais == null ? " + livraison" : ""}`,
       "",
-      `Nom : ${v.nom.trim()}`,
-      `Téléphone : ${v.tel.trim()}`,
-      `Adresse : ${v.adresse.trim()}`,
-      v.note.trim() ? `Message : ${v.note.trim()}` : "",
+      `Nom${NBSP}: ${v.nom.trim()}`,
+      `Téléphone${NBSP}: ${v.tel.trim()}`,
+      `Adresse${NBSP}: ${v.adresse.trim()}`,
+      v.note.trim() ? `Message${NBSP}: ${v.note.trim()}` : "",
       "",
       "Merci de me confirmer la disponibilité et le mode de paiement.",
     ]
       .filter((l, i, arr) => l !== "" || arr[i - 1] !== "")
       .join("\n");
-
-    window.open(waUrl(texte), "_blank", "noopener");
-    notifier("Commande prête : envoie le message sur WhatsApp");
-  });
+  }
 
   /* ---------- Fenêtres ---------- */
   function fermer(dlg) {

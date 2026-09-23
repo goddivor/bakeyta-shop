@@ -3,6 +3,15 @@
  * C'est le SEUL fichier à modifier pour changer le numéro WhatsApp,
  * les frais de livraison, les moyens de paiement ou les taux de change.
  */
+// Adresse de l'API (catalogue et commandes). En local : le serveur de développement.
+window.BAKEYTA_API = ["localhost", "127.0.0.1"].includes(location.hostname)
+  ? "http://localhost:4000"
+  : "https://bakeyta-api.vercel.app";
+
+/*
+ * Données de secours : utilisées seulement si l'API ne répond pas.
+ * Les vraies valeurs se gèrent désormais depuis le tableau de bord.
+ */
 window.BAKEYTA_CONFIG = {
   // Numéro WhatsApp qui reçoit les commandes : format international, chiffres uniquement.
   // Exemple pour le Togo : "22890000000" (228 = indicatif du Togo).
