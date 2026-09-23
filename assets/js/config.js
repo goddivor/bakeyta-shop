@@ -17,7 +17,7 @@ window.BAKEYTA_CONFIG = {
   // Exemple pour le Togo : "22890000000" (228 = indicatif du Togo).
   whatsapp: "22892127449",
 
-  email: "", // ex. "contact@bakeyta.com" (laisser vide pour masquer)
+  email: "mornexbakeyta@gmail.com",
 
   reseaux: {
     instagram: "https://www.instagram.com/mornex_bakeyta",
