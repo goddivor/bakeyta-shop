@@ -14,7 +14,8 @@ window.BAKEYTA_CONFIG = {
     instagram: "https://www.instagram.com/mornex_bakeyta",
     tiktok: "https://www.tiktok.com/@mornex_bakeyta",
     youtube: "https://www.youtube.com/@mornex.bakeyta",
-    facebook: "",
+    x: "https://x.com/MornexBakeyta",
+    facebook: "https://www.facebook.com/p/Mornex-Bakeyta-61579113844569/",
   },
 
   // Devise de base : tous les prix du catalogue sont en francs CFA (XOF).
