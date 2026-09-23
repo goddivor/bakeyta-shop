@@ -1,0 +1,40 @@
+/*
+ * Réglages de la boutique BAKEYTA.
+ * C'est le SEUL fichier à modifier pour changer le numéro WhatsApp,
+ * les frais de livraison, les moyens de paiement ou les taux de change.
+ */
+window.BAKEYTA_CONFIG = {
+  // Numéro WhatsApp qui reçoit les commandes : format international, chiffres uniquement.
+  // Exemple pour le Togo : "22890000000" (228 = indicatif du Togo).
+  whatsapp: "22800000000",
+
+  email: "", // ex. "contact@bakeyta.com" (laisser vide pour masquer)
+
+  reseaux: {
+    instagram: "", // ex. "https://instagram.com/bakeyta"
+    tiktok: "",
+    facebook: "",
+  },
+
+  // Devise de base : tous les prix du catalogue sont en francs CFA (XOF).
+  devises: {
+    XOF: { libelle: "FCFA", taux: 1 },
+    EUR: { libelle: "€", taux: 655.957 }, // parité fixe FCFA / euro
+    USD: { libelle: "$", taux: 600 }, // taux indicatif : à mettre à jour de temps en temps
+  },
+
+  // Zones de livraison. frais: null = « calculé et confirmé sur WhatsApp ».
+  livraison: [
+    { id: "lome", nom: "Lomé et environs", delai: "24 à 48 h", frais: 1000 },
+    { id: "togo", nom: "Reste du Togo", delai: "2 à 4 jours", frais: 2500 },
+    { id: "afrique", nom: "Afrique", delai: "5 à 10 jours", frais: null },
+    { id: "monde", nom: "Reste du monde", delai: "7 à 15 jours", frais: null },
+  ],
+
+  paiements: [
+    "Flooz (Moov Africa)",
+    "T-Money / Mixx by Yas",
+    "Espèces à la livraison (Lomé)",
+    "Western Union, MoneyGram ou Ria (hors Togo)",
+  ],
+};

@@ -1,0 +1,12 @@
+{
+  "name": "BAKEYTA Streetwear",
+  "short_name": "BAKEYTA",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0E0E0E",
+  "theme_color": "#0E0E0E",
+  "icons": [
+    { "src": "assets/img/embleme-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "assets/img/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}

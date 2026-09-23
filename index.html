@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>BAKEYTA Streetwear · Collection Renaissance</title>
+  <meta name="description" content="BAKEYTA, streetwear né au Togo. T-shirts oversize, joggings et casquettes de la collection Renaissance. Commande sur WhatsApp, livraison à Lomé, partout au Togo, en Afrique et dans le monde.">
+  <meta name="theme-color" content="#0E0E0E">
+  <meta name="color-scheme" content="dark">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="BAKEYTA">
+  <meta property="og:title" content="BAKEYTA Streetwear · Sois le changement.">
+  <meta property="og:description" content="Collection 01&nbsp;: Renaissance. Streetwear né au Togo, livré partout.">
+  <meta property="og:image" content="assets/img/og-image.jpg">
+  <meta property="og:locale" content="fr_FR">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" type="image/png" sizes="48x48" href="assets/img/favicon-48.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Michroma&family=Space+Grotesk:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="preload" as="image" href="assets/img/embleme.webp">
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#accueil" aria-label="BAKEYTA, retour à l'accueil">
+        <img src="assets/img/logotype.webp" alt="BAKEYTA" width="560" height="137">
+      </a>
+
+      <nav class="main-nav" id="menu" aria-label="Navigation principale">
+        <ul>
+          <li><a href="#collection">Collection</a></li>
+          <li><a href="#histoire">L'histoire</a></li>
+          <li><a href="#tailles">Tailles</a></li>
+          <li><a href="#livraison">Livraison</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <label class="visually-hidden" for="devise">Devise d'affichage</label>
+        <select id="devise" class="devise-select">
+          <option value="XOF">FCFA</option>
+          <option value="EUR">€ EUR</option>
+          <option value="USD">$ USD</option>
+        </select>
+
+        <button class="icon-btn cart-btn" type="button" id="open-cart" aria-haspopup="dialog">
+          <svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path d="M6 7h12l-1 13H7L6 7Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 7a3 3 0 0 1 6 0" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+          <span class="visually-hidden">Ouvrir le panier,</span>
+          <span class="cart-count" id="cart-count">0</span>
+          <span class="visually-hidden">article(s)</span>
+        </button>
+
+        <button class="icon-btn menu-btn" type="button" id="menu-btn" aria-expanded="false" aria-controls="menu">
+          <svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <span class="visually-hidden">Menu</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <!-- ACCUEIL -->
+    <section class="hero" id="accueil" aria-labelledby="hero-titre">
+      <div class="wrap hero-inner">
+        <div class="hero-text">
+          <p class="eyebrow">Collection 01 · Renaissance</p>
+          <h1 id="hero-titre">Sois le<br>changement.</h1>
+          <p class="lead">Streetwear né au Togo. Des pièces en coton épais, brodées du phénix, pour une génération qui renaît. Livraison à Lomé, partout au Togo, en Afrique et dans le monde.</p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#collection">Voir la collection</a>
+            <a class="btn btn-ghost js-wa-link" href="#" target="_blank" rel="noopener">Écrire sur WhatsApp</a>
+          </div>
+          <ul class="hero-points" aria-label="Nos engagements">
+            <li>Coton peigné 240&nbsp;g/m²</li>
+            <li>Commande simple sur WhatsApp</li>
+            <li>Paiement Mobile Money</li>
+          </ul>
+        </div>
+        <div class="hero-visual">
+          <img src="assets/img/embleme.webp" alt="" width="900" height="559" fetchpriority="high">
+          <p class="hero-tag" aria-hidden="true">Génération Fenix</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <span>Sois le changement.</span><span>Génération Fenix</span><span>Même fruit. Nouvelle espèce.</span><span>Fait au Togo</span>
+        <span>Sois le changement.</span><span>Génération Fenix</span><span>Même fruit. Nouvelle espèce.</span><span>Fait au Togo</span>
+      </div>
+    </div>
+
+    <!-- COLLECTION -->
+    <section class="section" id="collection" aria-labelledby="collection-titre">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Collection 01</p>
+          <h2 id="collection-titre">Renaissance</h2>
+          <p class="section-intro">Quatre pièces pour commencer. Choisis ta taille, ajoute au panier et envoie ta commande sur WhatsApp&nbsp;: on te répond pour le paiement et la livraison.</p>
+        </div>
+
+        <div class="filters" role="group" aria-label="Filtrer par catégorie">
+          <button type="button" class="chip" data-filtre="tout" aria-pressed="true">Tout</button>
+          <button type="button" class="chip" data-filtre="tshirts" aria-pressed="false">T-shirts</button>
+          <button type="button" class="chip" data-filtre="bas" aria-pressed="false">Joggings</button>
+          <button type="button" class="chip" data-filtre="accessoires" aria-pressed="false">Casquettes</button>
+        </div>
+
+        <ul class="grid" id="grille-produits" aria-live="polite"></ul>
+        <noscript><p class="notice">Active JavaScript pour voir les produits, ou écris-nous directement sur WhatsApp.</p></noscript>
+      </div>
+    </section>
+
+    <!-- HISTOIRE -->
+    <section class="section section-alt" id="histoire" aria-labelledby="histoire-titre">
+      <div class="wrap story">
+        <div class="story-text">
+          <p class="eyebrow">L'histoire</p>
+          <h2 id="histoire-titre">Même fruit.<br><span class="accent">Nouvelle espèce.</span></h2>
+          <blockquote class="manifesto">
+            <p>Nous gardons les racines, pas les blessures. Chaque pièce BAKEYTA porte le feu d'une génération qui renaît.</p>
+          </blockquote>
+          <p>BAKEYTA est une marque de streetwear togolaise fondée par Mornex Bakeyta. Le phénix, c'est l'idée de renaître plus fort sans renier d'où l'on vient&nbsp;; la mangue, c'est le fruit de chez nous, celui qu'on connaît tous. Même fruit, nouvelle espèce&nbsp;: c'est la Génération Fenix.</p>
+          <ul class="palette" aria-label="Les couleurs de la marque">
+            <li style="--c:#0E0E0E">Noir Cendre</li>
+            <li style="--c:#C71E10">Rouge Braise</li>
+            <li style="--c:#FB640C">Orange Feu</li>
+            <li style="--c:#FCA418">Jaune Flamme</li>
+            <li style="--c:#EFE7DC">Crème Noyau</li>
+            <li style="--c:#2F5D3A">Vert Manguier</li>
+          </ul>
+        </div>
+        <div class="story-visual">
+          <img src="assets/img/hangtag-recto.webp" alt="Étiquette BAKEYTA recto&nbsp;: phénix, «&nbsp;Sois le changement.&nbsp;», Génération Fenix" width="345" height="624" loading="lazy">
+          <img src="assets/img/hangtag-verso.webp" alt="Étiquette BAKEYTA verso&nbsp;: «&nbsp;Même fruit. Nouvelle espèce.&nbsp;»" width="345" height="624" loading="lazy">
+        </div>
+      </div>
+
+      <div class="wrap quality">
+        <article>
+          <h3>Coton épais</h3>
+          <p>T-shirts en jersey 100&nbsp;% coton peigné de 240&nbsp;g/m², pré-rétréci&nbsp;: il garde sa forme lavage après lavage.</p>
+        </article>
+        <article>
+          <h3>Phénix brodé</h3>
+          <p>L'emblème est brodé, pas imprimé, sur chaque pièce&nbsp;: poitrine, cuisse ou avant de la casquette.</p>
+        </article>
+        <article>
+          <h3>Pensé pour durer</h3>
+          <p>Marquages testés pour tenir 30 lavages sans craquer. Lavage à 30&nbsp;°C sur l'envers, sans sèche-linge.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- TAILLES -->
+    <section class="section" id="tailles" aria-labelledby="tailles-titre">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Guide des tailles</p>
+          <h2 id="tailles-titre">Trouve ta taille</h2>
+          <p class="section-intro">Mesures du vêtement fini, posé à plat, en centimètres. Astuce&nbsp;: mesure un vêtement que tu aimes déjà porter et compare.</p>
+        </div>
+        <div class="tabs" id="guides"></div>
+      </div>
+    </section>
+
+    <!-- COMMANDER -->
+    <section class="section section-alt" id="commander" aria-labelledby="commander-titre">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Comment commander</p>
+          <h2 id="commander-titre">Simple comme un message</h2>
+        </div>
+        <ol class="steps">
+          <li><span class="step-n" aria-hidden="true">1</span><h3>Choisis</h3><p>Sélectionne tes articles et tes tailles, puis ajoute-les au panier.</p></li>
+          <li><span class="step-n" aria-hidden="true">2</span><h3>Envoie</h3><p>Indique ta ville et ton numéro&nbsp;: ta commande part toute prête sur WhatsApp.</p></li>
+          <li><span class="step-n" aria-hidden="true">3</span><h3>Paie</h3><p>On confirme le stock et le total, puis tu paies par Mobile Money ou à la livraison.</p></li>
+          <li><span class="step-n" aria-hidden="true">4</span><h3>Reçois</h3><p>On livre à Lomé, dans tout le Togo, et on expédie en Afrique et dans le monde.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- LIVRAISON -->
+    <section class="section" id="livraison" aria-labelledby="livraison-titre">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Livraison et paiement</p>
+          <h2 id="livraison-titre">Du Togo vers le monde</h2>
+        </div>
+        <ul class="zones" id="zones"></ul>
+        <div class="payments">
+          <h3>Moyens de paiement</h3>
+          <ul id="paiements"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section-alt" id="faq" aria-labelledby="faq-titre">
+      <div class="wrap narrow">
+        <div class="section-head">
+          <p class="eyebrow">Questions fréquentes</p>
+          <h2 id="faq-titre">FAQ</h2>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>Comment passer commande&nbsp;?</summary>
+            <p>Ajoute tes articles au panier, remplis ton nom, ton numéro et ta ville, puis appuie sur «&nbsp;Envoyer ma commande sur WhatsApp&nbsp;». Le message est déjà rédigé, tu n'as plus qu'à l'envoyer. On te répond pour confirmer.</p>
+          </details>
+          <details>
+            <summary>Est-ce que vous livrez hors du Togo&nbsp;?</summary>
+            <p>Oui. On expédie partout en Afrique et dans le monde. Les frais et le délai dépendent du pays&nbsp;: on te les confirme sur WhatsApp avant tout paiement.</p>
+          </details>
+          <details>
+            <summary>Comment payer&nbsp;?</summary>
+            <p>Au Togo, par Flooz, T-Money / Mixx by Yas ou en espèces à la livraison à Lomé. Depuis l'étranger, par transfert d'argent (Western Union, MoneyGram, Ria). On ne te demande jamais de payer avant d'avoir confirmé ta commande.</p>
+          </details>
+          <details>
+            <summary>Quelle taille choisir&nbsp;?</summary>
+            <p>Les t-shirts sont coupés oversize&nbsp;: prends ta taille habituelle pour un effet ample. Consulte le <a href="#tailles">guide des tailles</a> ou envoie-nous ta taille et ta morphologie sur WhatsApp, on te conseille.</p>
+          </details>
+          <details>
+            <summary>Puis-je échanger un article&nbsp;?</summary>
+            <p>Si la taille ne va pas, écris-nous dans les 7&nbsp;jours suivant la réception. L'article doit être neuf, non lavé et avec son étiquette&nbsp;; on organise l'échange avec toi.</p>
+          </details>
+          <details>
+            <summary>Comment entretenir mes vêtements&nbsp;?</summary>
+            <p>Lavage à 30&nbsp;°C sur l'envers, pas d'eau de Javel, pas de sèche-linge, repassage doux sans passer sur le marquage, pas de nettoyage à sec.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div>
+        <img src="assets/img/logotype.webp" alt="BAKEYTA" width="200" height="49" loading="lazy">
+        <p class="footer-slogan">Sois le changement. Génération Fenix.</p>
+      </div>
+      <div>
+        <h2 class="footer-title">Contact</h2>
+        <ul class="footer-links" id="footer-contact"></ul>
+      </div>
+      <div>
+        <h2 class="footer-title">Boutique</h2>
+        <ul class="footer-links">
+          <li><a href="#collection">Collection</a></li>
+          <li><a href="#tailles">Guide des tailles</a></li>
+          <li><a href="#livraison">Livraison</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="wrap copyright">© <span id="annee">2026</span> BAKEYTA Streetwear. Fait au Togo, porté partout.</p>
+  </footer>
+
+  <a class="wa-float js-wa-link" href="#" target="_blank" rel="noopener" aria-label="Nous écrire sur WhatsApp">
+    <svg aria-hidden="true" viewBox="0 0 32 32" width="28" height="28"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3Zm0 23.7c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1 1-3.8-.2-.4A10.7 10.7 0 1 1 16 26.7Zm5.9-8c-.3-.2-1.9-1-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.8 8.8 0 0 1-4.4-3.8c-.3-.6.3-.5.9-1.6.1-.2 0-.4 0-.5l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6 0-.9.4-.3.3-1.1 1.1-1.1 2.7s1.2 3.1 1.3 3.3c.2.2 2.3 3.5 5.5 4.9 2 .9 2.8.9 3.8.8.6-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5l-.6-.3Z"/></svg>
+  </a>
+
+  <!-- FICHE PRODUIT -->
+  <dialog class="modal product-modal" id="product-modal" aria-labelledby="pm-nom">
+    <div class="modal-body" id="product-modal-body"></div>
+  </dialog>
+
+  <!-- PANIER -->
+  <dialog class="drawer" id="cart" aria-labelledby="cart-titre">
+    <div class="drawer-head">
+      <h2 id="cart-titre">Ton panier</h2>
+      <button class="icon-btn" type="button" data-close aria-label="Fermer le panier">
+        <svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="drawer-content">
+      <ul class="cart-items" id="cart-items"></ul>
+      <p class="cart-empty" id="cart-empty">Ton panier est vide pour l'instant.</p>
+
+      <form class="checkout" id="checkout" novalidate>
+        <fieldset>
+          <legend>Livraison</legend>
+          <label for="zone">Zone de livraison</label>
+          <select id="zone" name="zone" required></select>
+
+          <label for="nom">Nom complet</label>
+          <input id="nom" name="nom" autocomplete="name" required>
+
+          <label for="tel">Numéro WhatsApp ou téléphone</label>
+          <input id="tel" name="tel" type="tel" autocomplete="tel" inputmode="tel" placeholder="+228 90 00 00 00" required>
+
+          <label for="adresse">Ville, quartier et repère</label>
+          <input id="adresse" name="adresse" autocomplete="street-address" placeholder="Lomé, Bè, près du marché" required>
+
+          <label for="note">Message (facultatif)</label>
+          <textarea id="note" name="note" rows="2"></textarea>
+        </fieldset>
+
+        <dl class="totals">
+          <div><dt>Sous-total</dt><dd id="t-sous-total">0</dd></div>
+          <div><dt>Livraison</dt><dd id="t-livraison">–</dd></div>
+          <div class="grand"><dt>Total</dt><dd id="t-total">0</dd></div>
+        </dl>
+        <p class="form-error" id="form-error" role="alert"></p>
+        <button class="btn btn-primary btn-block" type="submit">Envoyer ma commande sur WhatsApp</button>
+        <p class="fine">Aucun paiement en ligne&nbsp;: on confirme d'abord ta commande sur WhatsApp.</p>
+      </form>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/produits.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
